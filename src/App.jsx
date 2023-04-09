@@ -10,14 +10,16 @@ import { store } from '@store';
 
 import { DashboardLayout } from './layouts';
 import LoginPage from './pages/Login';
+import Logout from './pages/Logout';
 
 const App = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path={ROUTES.DASHBOARD} element={<LoginPage />} />
+        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+        <Route path={ROUTES.LOGOUT} element={<Logout />} />
         <Route element={<DashboardLayout />}>
-          <Route path={ROUTES.LOGIN} element={<div>App</div>} />
+          <Route path={ROUTES.DASHBOARD} element={<div>App</div>} />
         </Route>
       </Routes>
     </HashRouter>
