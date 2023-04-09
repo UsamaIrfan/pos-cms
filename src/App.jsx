@@ -1,45 +1,40 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ROUTES } from '@utils/routes';
+import { ConfigProvider } from 'antd';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.css';
+
+import { store } from '@store';
+
+import { DashboardLayout } from './layouts';
+import LoginPage from './pages/Login';
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route path={ROUTES.DASHBOARD} element={<LoginPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path={ROUTES.LOGIN} element={<div>App</div>} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 };
 
-export default App;
+const WrappedApp = () => {
+  return (
+    <Provider store={store()}>
+      <ConfigProvider
+        getPopupContainer={(trigger) => trigger?.parentNode}
+        theme={{ token: { colorPrimary: '#4c52bc' } }}
+      >
+        <App />
+      </ConfigProvider>
+    </Provider>
+  );
+};
+
+export default WrappedApp;

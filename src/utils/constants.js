@@ -1,0 +1,9 @@
+export const LIMIT = 10;
+export const TOKEN = 'token';
+export const PERMISSIONS = 'permissions';
+export const AUTH_CRED = 'AUTH_CRED';
+export const AUTH_TOKEN = 'AUTH_TOKEN';
+export const SUPER_DATA_ADMIN = 'SUPER_DATA_ADMIN';
+export const SUPER_USER = 'SUPER_USER';
+export const OFFICE_SWIMLANE_USER = 'OFFICE_SWIMLANE_USER';
+export const DATE_FORMAT = 'YYYY-MM-DD';
