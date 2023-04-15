@@ -4,15 +4,13 @@ import Cookie from 'js-cookie';
 import {
   AUTH_CRED,
   AUTH_TOKEN,
+  CUSTOMER,
   PERMISSIONS,
-  SUPER_DATA_ADMIN,
-  SUPER_USER,
+  SUPER_ADMIN,
   TOKEN,
 } from './constants';
 
-export const allowedRoles = [SUPER_DATA_ADMIN, SUPER_USER];
-export const swimlaneOnly = [SUPER_DATA_ADMIN];
-export const officeAndSwimlaneRole = [SUPER_DATA_ADMIN];
+export const allowedRoles = [SUPER_ADMIN, CUSTOMER];
 
 export function setAuthCredentials(token, permissions, user) {
   Cookie.set(AUTH_CRED, JSON.stringify({ token, permissions, user }));
