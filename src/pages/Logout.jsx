@@ -15,7 +15,7 @@ function Logout() {
 
   return (
     <div
-      style={{ width: '100%', height: '100vh' }}
+      style={{ width: '100%', height: '100vh', backgroundColor: 'white' }}
       className='d-flex justify-content-center align-items-center'
     >
       <Spin />
