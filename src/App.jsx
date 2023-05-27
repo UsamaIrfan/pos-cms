@@ -6,6 +6,8 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
+import PrivateRoute from '@components/auth/PrivateRoute';
+
 import { store } from '@store';
 
 import { DashboardLayout } from './layouts';
@@ -19,7 +21,14 @@ const App = () => {
         <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         <Route path={ROUTES.LOGOUT} element={<Logout />} />
         <Route element={<DashboardLayout />}>
-          <Route path={ROUTES.DASHBOARD} element={<div>App</div>} />
+          <Route
+            path={ROUTES.DASHBOARD}
+            element={
+              <PrivateRoute>
+                <div>App</div>
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </HashRouter>

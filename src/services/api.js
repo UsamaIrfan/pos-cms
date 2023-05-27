@@ -27,8 +27,8 @@ const customizeBaseQuery = () => {
     let status = response.meta.response?.status;
     const { data, error } = response;
 
-    if (data?.accessToken) {
-      setAuthToken(data?.accessToken);
+    if (data?.token) {
+      setAuthToken(data?.token);
     }
     /* eslint-disable no-console */
     if (data?.data?.inboxLink)

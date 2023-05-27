@@ -30,10 +30,10 @@ const LoginForm = () => {
       email,
       password,
     });
-    if (data?.accessToken) {
+    if (data?.token) {
       if (hasAccess(allowedRoles, data?.roles)) {
-        setAuthCredentials(data?.accessToken, data?.roles, data);
-        navigate(ROUTES.LEAD_MANAGER);
+        setAuthCredentials(data?.token, data?.roles, data);
+        navigate(ROUTES.DASHBOARD);
         return;
       }
     }
