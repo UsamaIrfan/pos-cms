@@ -1,0 +1,50 @@
+@import url('./assets/css/colors.css');
+
+@font-face {
+  font-family: 'Primary';
+  src: url('./assets/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Primary-Bold';
+  src: url('./assets/fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Primary-Italic';
+  src: url('./assets/fonts/OpenSans-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'Primary-Light';
+  src: url('./assets/fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Primary-Medium';
+  src: url('./assets/fonts/OpenSans-Medium.ttf');
+}
+
+.f-primary {
+  font-family: 'Primary';
+}
+
+.f-primary-bold {
+  font-family: 'Primary-Bold';
+}
+
+.f-primary-light {
+  font-family: 'Primary-Light';
+}
+
+.f-primary-medium {
+  font-family: 'Primary-Medium';
+}
+
+.f-primary-italic {
+  font-family: 'Primary-Italic';
+}
+
+.bg-gray {
+  background-color: #fafaf9;
+}

@@ -4,6 +4,7 @@
 import { baseUrl } from '@config/webServices';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getAuthToken, setAuthToken } from '@utils/auth';
+import { message } from 'antd';
 
 const customizeBaseQuery = () => {
   const baseQuery = fetchBaseQuery({
@@ -19,7 +20,7 @@ const customizeBaseQuery = () => {
 
       // headers.set('Content-Type', `application/json`);
       return headers;
-    },
+    }
   });
 
   return async (args, api, extraOptions) => {
@@ -57,7 +58,8 @@ const notificationSuccessPopup = (data) => {
 };
 
 const notificationFailPopup = (data) => {
-  if (data && typeof data === 'string') {
+  if (data && data?.message) {
+    message.error(data?.message);
     // NotificationHelper.error(data);
   } else if (data?.message) {
     // NotificationHelper.error(data?.message);

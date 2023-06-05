@@ -1,16 +1,13 @@
 import SSRCookie from 'cookie';
 import Cookie from 'js-cookie';
 
-import {
-  AUTH_CRED,
-  AUTH_TOKEN,
-  CUSTOMER,
-  PERMISSIONS,
-  SUPER_ADMIN,
-  TOKEN,
-} from './constants';
+import { AUTH_CRED, AUTH_TOKEN, PERMISSIONS, ROLES, TOKEN } from './constants';
 
-export const allowedRoles = [SUPER_ADMIN, CUSTOMER];
+export const allowedRoles = [
+  ROLES.USER,
+  ROLES.COMPANY_OWNER,
+  ROLES.COMPANY_STAFF
+];
 
 export function setAuthCredentials(token, permissions, user) {
   Cookie.set(AUTH_CRED, JSON.stringify({ token, permissions, user }));

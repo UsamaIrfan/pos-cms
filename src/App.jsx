@@ -11,14 +11,27 @@ import PrivateRoute from '@components/auth/PrivateRoute';
 import { store } from '@store';
 
 import { DashboardLayout } from './layouts';
-import LoginPage from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import LoginPage from './pages/Login/Login';
 import Logout from './pages/Logout';
+import RegisterPage from './pages/Register/Register';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
+import VerifyEmailPage from './pages/VerifyEmail/VerifyEmail';
+import VerifyForgotPassword from './pages/VerifyForgotPassword/VerifyForgotPassword';
 
 const App = () => {
   return (
     <HashRouter>
       <Routes>
         <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+        <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
+        <Route path={ROUTES.VERIFY_EMAIL} element={<VerifyEmailPage />} />
+        <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
+        <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
+        <Route
+          path={ROUTES.VERIFY_FORGOT_TOKEN}
+          element={<VerifyForgotPassword />}
+        />
         <Route path={ROUTES.LOGOUT} element={<Logout />} />
         <Route element={<DashboardLayout />}>
           <Route
@@ -40,7 +53,7 @@ const WrappedApp = () => {
     <Provider store={store()}>
       <ConfigProvider
         getPopupContainer={(trigger) => trigger?.parentNode}
-        theme={{ token: { colorPrimary: '#4c52bc' } }}
+        theme={{ token: { colorPrimary: '#4c52bc', fontFamily: 'Primary' } }}
       >
         <App />
       </ConfigProvider>

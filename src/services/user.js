@@ -6,8 +6,12 @@ import { REDUCER_PATHS } from '@utils/enums';
 import { createApi, customizeBaseQuery } from './api';
 import {
   API_FORGOT_PASSWORD,
+  API_FORGOT_PASSWORD_VERIFY,
   API_LOGIN,
+  API_REGISTER,
   API_RESET_PASSWORD,
+  API_VERIFY_EMAIL,
+  API_VERIFY_EMAIL_RESEND
 } from '../config/webServices';
 
 export const updateUserLocally = async (
@@ -36,33 +40,65 @@ const userApi = createApi({
       query: (data) => ({
         url: API_LOGIN,
         method: 'POST',
-        body: data,
+        body: data
       }),
-      onQueryStarted: updateUserLocally,
+      onQueryStarted: updateUserLocally
       // invalidatesTags: ['User']
+    }),
+    registerUser: builder.mutation({
+      query: (data) => ({
+        url: API_REGISTER,
+        method: 'POST',
+        body: data
+      })
+    }),
+    verifyEmail: builder.mutation({
+      query: (data) => ({
+        url: API_VERIFY_EMAIL,
+        method: 'POST',
+        body: data
+      })
+    }),
+    resendVerifyEmail: builder.mutation({
+      query: (data) => ({
+        url: API_VERIFY_EMAIL_RESEND,
+        method: 'POST',
+        body: data
+      })
     }),
     forgotPassword: builder.mutation({
       query: (data) => ({
         url: API_FORGOT_PASSWORD,
         method: 'POST',
-        body: data,
-      }),
+        body: data
+      })
+    }),
+    verifyForgotPasswordToken: builder.mutation({
+      query: (data) => ({
+        url: API_FORGOT_PASSWORD_VERIFY,
+        method: 'POST',
+        body: data
+      })
     }),
     resetPassword: builder.mutation({
-      query: ({ token, ...data }) => ({
-        url: `${API_RESET_PASSWORD}/${token}`,
+      query: (data) => ({
+        url: API_RESET_PASSWORD,
         method: 'POST',
-        body: data,
-      }),
-    }),
+        body: data
+      })
+    })
   }),
-  overrideExisting: true,
+  overrideExisting: true
 });
 
 export default userApi;
 export const {
   useLoginUserMutation,
+  useRegisterUserMutation,
+  useVerifyEmailMutation,
+  useVerifyForgotPasswordTokenMutation,
+  useResendVerifyEmailMutation,
   useGetUserDetailsQuery,
   useForgotPasswordMutation,
-  useResetPasswordMutation,
+  useResetPasswordMutation
 } = userApi;
