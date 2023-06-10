@@ -1,15 +1,17 @@
 import NavBar from '@layouts/navbar/Navbar';
+import { ROUTES } from '@utils/routes';
 import { Layout, Menu } from 'antd';
 import cn from 'classnames';
 import { useState } from 'react';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import styles from './app.module.css';
 
 const { Content, Sider } = Layout;
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -30,7 +32,15 @@ const DashboardLayout = () => {
             defaultOpenKeys={['0']}
             selectedKeys={['0', '1']}
             style={{ height: '100%', borderRight: 0 }}
-            items={items}
+            items={items.map((item) => ({
+              ...item,
+              children: item.children
+                ? item.children?.map((child) => ({
+                    ...child,
+                    onClick: () => navigate(child.route)
+                  }))
+                : []
+            }))}
           />
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
@@ -39,7 +49,7 @@ const DashboardLayout = () => {
             style={{
               padding: 12,
               marginTop: 24,
-              minHeight: 280,
+              minHeight: 280
             }}
           >
             <Outlet />
@@ -56,15 +66,12 @@ const items = [
     label: 'Dashboard',
     children: [
       {
+        route: ROUTES.TENDER.MANAGE,
         key: '1',
-        label: 'Bids',
-      },
-      {
-        key: '1',
-        label: 'Products',
-      },
-    ],
-  },
+        label: 'Tender Management'
+      }
+    ]
+  }
 ];
 
 export default DashboardLayout;

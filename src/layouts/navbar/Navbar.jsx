@@ -16,7 +16,7 @@ function NavBar() {
   return (
     <AntHeader className={cn(styles.navbar_background)}>
       <div className={cn(styles.logo)}>
-        <Typography.Title level={3}>Auction180</Typography.Title>
+        <Typography.Title level={3}>ProXcure</Typography.Title>
       </div>
 
       <Menu
@@ -25,7 +25,7 @@ function NavBar() {
         selectedKeys={[location.pathname]}
         items={routes.map((route) => ({
           ...route,
-          onClick: () => navigate(route.key),
+          onClick: () => navigate(route.key)
         }))}
       />
       <Menu
@@ -44,7 +44,7 @@ function NavBar() {
         style={{ position: 'absolute', top: 0, right: 10, maxWidth: '150px' }}
         items={dropDownRoutes.map((route) => ({
           ...route,
-          onClick: () => navigate(route.key),
+          onClick: () => navigate(route.key)
         }))}
       />
     </AntHeader>
@@ -53,20 +53,15 @@ function NavBar() {
 
 export default NavBar;
 
-const routes = [
-  {
-    label: 'Dashboard',
-    key: ROUTES.LEAD_MANAGER,
-  },
-];
+const routes = [];
 
 const dropDownRoutes = [
   {
     label: 'Profile',
-    key: ROUTES.PROFILE,
+    key: ROUTES.PROFILE
   },
   {
     label: 'Logout',
-    key: ROUTES.LOGOUT,
-  },
+    key: ROUTES.LOGOUT
+  }
 ];

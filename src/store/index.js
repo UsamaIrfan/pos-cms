@@ -2,6 +2,7 @@
 import { configureStore as reduxConfigureStore } from '@reduxjs/toolkit';
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query';
+import tenderApi from '@services/tender';
 import userApi from '@services/user';
 
 // import auth from '../Slices/authSlice';
@@ -21,12 +22,13 @@ export const store = () => {
     reducer: {
       ...combineReducer,
       [userApi.reducerPath]: userApi.reducer,
+      [tenderApi.reducerPath]: tenderApi.reducer
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(userApi.middleware),
-    devTools: process.env.NODE_ENV === 'development',
+      getDefaultMiddleware().concat(userApi.middleware, tenderApi.middleware),
+    devTools: process.env.NODE_ENV === 'development'
   });
 
   return cs;

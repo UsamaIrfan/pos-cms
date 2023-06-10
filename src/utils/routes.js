@@ -6,6 +6,10 @@ export const ROUTES = {
   VERIFY_EMAIL: '/verify-email',
   VERIFY_FORGOT_TOKEN: '/verify-forgot',
   RESET_PASSWORD: '/reset-password',
+  TENDER: {
+    MANAGE: '/tenders',
+    CREATE: '/tenders/create'
+  },
   PROFILE: '/profile',
   LOGOUT: '/logout'
 };

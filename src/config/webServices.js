@@ -12,3 +12,6 @@ export const API_FORGOT_PASSWORD = `${API}/auth/forgot-password`;
 export const API_FORGOT_PASSWORD_VERIFY = `${API}/auth/verify-forgot`;
 export const API_RESET_PASSWORD = `${API}/auth/reset-password`;
 export const API_CHANGE_PASSWORD = `${API}/auth/change-password`;
+
+// Tenders
+export const API_TENDER = `${API}/tender`;

@@ -1,7 +1,7 @@
 // import NotificationHelper from 'Helpers/NotificationHelper';
 import { setUser } from '@slices/auth';
 import { setAuthCredentials } from '@utils/auth';
-import { REDUCER_PATHS } from '@utils/enums';
+import { REDUCER_PATHS, SERVICE_TAGS } from '@utils/enums';
 
 import { createApi, customizeBaseQuery } from './api';
 import {
@@ -34,7 +34,7 @@ export const updateUserLocally = async (
 const userApi = createApi({
   reducerPath: REDUCER_PATHS.user,
   baseQuery: customizeBaseQuery(),
-  tagTypes: ['User'],
+  tagTypes: [SERVICE_TAGS.USER],
   endpoints: (builder) => ({
     loginUser: builder.mutation({
       query: (data) => ({

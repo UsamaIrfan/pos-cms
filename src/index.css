@@ -25,6 +25,10 @@
   src: url('./assets/fonts/OpenSans-Medium.ttf');
 }
 
+svg {
+  vertical-align: baseline !important;
+}
+
 .f-primary {
   font-family: 'Primary';
 }
