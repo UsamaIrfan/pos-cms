@@ -17,14 +17,15 @@ const CreateTender = () => {
         </Col>
         <Col xs={24} lg={6}>
           <Card>
-            <Timeline pending='Continuing' reverse={true}>
-              <Timeline.Item color='blue'>
+            <Timeline>
+              <Timeline.Item color='green'>
                 Enter basic tender information
               </Timeline.Item>
               <Timeline.Item color='gray'>
                 Enter tender BOQs (Bill Of Quantity)
               </Timeline.Item>
               <Timeline.Item color='gray'>Add Sections to BOQs</Timeline.Item>
+              <Timeline.Item color='gray'>Add Sections items</Timeline.Item>
             </Timeline>
           </Card>
         </Col>

@@ -1,4 +1,5 @@
 import { useRegisterUserMutation } from '@services/user';
+import { ROLES } from '@utils/constants';
 import { ROUTES } from '@utils/routes';
 import { Button, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +31,8 @@ const RegisterForm = () => {
       username,
       phoneNumber,
       email,
-      password
+      password,
+      roles: [ROLES.COMPANY_OWNER]
     });
     if (data) {
       message.success(data?.message);
@@ -58,11 +60,7 @@ const RegisterForm = () => {
           <Input size='large' />
         </Form.Item>
 
-        <Form.Item
-          label='Password'
-          name='password'
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
+        <Form.Item label='Password' name='password' rules={[yupSync]}>
           <Input.Password
             required
             size='large'

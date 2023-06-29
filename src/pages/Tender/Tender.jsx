@@ -1,5 +1,6 @@
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { useTendersQuery } from '@services/tender';
+import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import { Button, Row, Table, Typography } from 'antd';
 import React from 'react';
@@ -30,10 +31,14 @@ const columns = [
 
 const Tender = () => {
   const navigate = useNavigate();
-  const { data, isLoading } = useTendersQuery();
+  const { user } = getAuthCredentials();
+  const { data, isLoading } = useTendersQuery({
+    companyId: user?.user?.company?.[0]?.id
+  });
   const tenders = data?.data?.docs ?? [];
 
   const onCreate = () => navigate(ROUTES.TENDER.CREATE);
+
   return (
     <>
       <Row justify='space-between'>

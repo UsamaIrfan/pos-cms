@@ -15,3 +15,15 @@ export const API_CHANGE_PASSWORD = `${API}/auth/change-password`;
 
 // Tenders
 export const API_TENDER = `${API}/tender`;
+
+// Company
+export const API_COMPANY = `${API}/company`;
+
+// BOQ
+export const API_BOQ = `${API}/boq`;
+
+// SECTION
+export const API_SECTION = `${API}/section`;
+
+// SECTION-ITEMS
+export const API_SECTION_ITEMS = `${API}/section-item`;

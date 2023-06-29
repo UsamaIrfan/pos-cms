@@ -30,7 +30,7 @@ const LoginForm = () => {
     if (data?.token) {
       if (hasAccess(allowedRoles, data?.roles)) {
         setAuthCredentials(data?.token, data?.roles, data);
-        navigate(ROUTES.DASHBOARD);
+        navigate(ROUTES.DASHBOARD, { replace: true });
         return;
       }
     }

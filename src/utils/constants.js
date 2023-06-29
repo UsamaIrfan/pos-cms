@@ -11,3 +11,38 @@ export const ROLES = Object.freeze({
   COMPANY_OWNER: 'COMPANY_OWNER',
   COMPANY_STAFF: 'COMPANY_STAFF'
 });
+
+export const unitOptions = [
+  {
+    label: 'KG',
+    value: 'kg'
+  },
+  {
+    label: 'Liters',
+    value: 'liters'
+  },
+  {
+    label: 'Grams',
+    value: 'grams'
+  },
+  {
+    label: 'CM',
+    value: 'centimeters'
+  },
+  {
+    label: 'Inches',
+    value: 'inches'
+  },
+  {
+    label: 'Watts',
+    value: 'watts'
+  },
+  {
+    label: 'CM Square',
+    value: 'cm-square'
+  },
+  {
+    label: 'Yards',
+    value: 'yards'
+  }
+];

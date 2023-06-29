@@ -1,11 +1,14 @@
 import { getAuthCredentials, isAuthenticated } from '@utils/auth';
+import { THEME_OPTIONS } from '@utils/enums';
 import Images from '@utils/images';
 import { ROUTES } from '@utils/routes';
 import { Image, Typography } from 'antd';
 import cn from 'classnames';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
+import Colors from 'src/theme/Colors';
 
 import styles from './Login.module.css';
 
@@ -14,6 +17,7 @@ import LoginForm from '@components/auth/LoginForm';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const theme = useSelector((state) => state.app.theme);
   const { token, permissions } = getAuthCredentials();
   useEffect(() => {
     if (isAuthenticated({ token, permissions })) {
@@ -34,6 +38,12 @@ export default function LoginPage() {
             styles.leftContainer,
             'd-none d-md-flex flex-column h-100 align-items-center bg-gray'
           )}
+          style={{
+            background:
+              theme === THEME_OPTIONS.DARK
+                ? Colors.default.black4
+                : Colors.default.white2
+          }}
         >
           <Typography.Title level={3}>ProXcure</Typography.Title>
           <div className='pt-3'>
@@ -44,7 +54,7 @@ export default function LoginPage() {
           <div className={styles.imageContainer}>
             <Image src={Images.loginImage} preview={false} />
           </div>
-          <div className='pt-3 text-bg-light w-50 text-center'>
+          <div className='pt-3 w-50 text-center'>
             <Typography.Text className='f-primary-light'>
               We make it easier for you. <br />
               Get started with simplicity
@@ -55,6 +65,12 @@ export default function LoginPage() {
           sm={12}
           lg={9}
           className='d-flex align-items-md-center justify-content-center flex-column'
+          style={{
+            background:
+              theme === THEME_OPTIONS.DARK
+                ? Colors.default.black1
+                : Colors.default.white1
+          }}
         >
           <Col sm={12} md={6}>
             <Typography.Title level={3} className='d-md-none'>
