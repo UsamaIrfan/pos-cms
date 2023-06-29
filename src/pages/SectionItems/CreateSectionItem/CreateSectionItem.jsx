@@ -1,9 +1,15 @@
+import { ROUTES } from '@utils/routes';
 import { Card, Col, Row, Timeline, Typography } from 'antd';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { CreateEditSectionItemForm } from '@components/index';
 
 const CreateSectionItem = () => {
+  const navigate = useNavigate();
+
+  const onComplete = () => navigate(ROUTES.SECTION_ITEMS.MANAGE);
+
   return (
     <>
       <Row justify='space-between'>
@@ -13,7 +19,7 @@ const CreateSectionItem = () => {
       </Row>
       <Row gutter={16}>
         <Col xs={24} lg={12}>
-          <CreateEditSectionItemForm />
+          <CreateEditSectionItemForm onComplete={onComplete} />
         </Col>
 
         <Col xs={24} lg={6}>

@@ -1,5 +1,6 @@
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { useSectionsQuery } from '@services/sections';
+import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import { Button, Drawer, Row, Table, Typography } from 'antd';
 import React, { useState } from 'react';
@@ -39,7 +40,10 @@ const Section = () => {
   const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState();
-  const { data, isLoading } = useSectionsQuery();
+  const { user } = getAuthCredentials();
+  const { data, isLoading } = useSectionsQuery({
+    companyId: user?.user?.company?.[0]?.id
+  });
   const sections = data?.data ?? [];
 
   const onCreate = () => navigate(ROUTES.SECTION.CREATE);

@@ -3,6 +3,7 @@ import {
   useCreateSectionMutation,
   useUpdateSectionMutation
 } from '@services/sections';
+import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import { Button, Form, Input, Select } from 'antd';
 import { useEffect } from 'react';
@@ -20,7 +21,10 @@ const CreateEditSectionForm = ({ initialValues, onComplete }) => {
   const navigate = useNavigate();
   const [createSection, { isLoading: loading }] = useCreateSectionMutation();
   const [updateSection, { isLoading: updating }] = useUpdateSectionMutation();
-  const { data, isLoading: boqsLoading } = useBoqsQuery();
+  const { user } = getAuthCredentials();
+  const { data, isLoading: boqsLoading } = useBoqsQuery({
+    companyId: user?.user?.company?.[0]?.id
+  });
   const boqsOptions = data?.data
     ? data?.data?.map((doc) => ({ label: doc?.name, value: doc?.id }))
     : [];

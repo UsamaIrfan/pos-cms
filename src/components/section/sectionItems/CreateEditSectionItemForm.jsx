@@ -2,6 +2,8 @@ import {
   useCreateSectionItemMutation,
   useUpdateSectionItemMutation
 } from '@services/sectionItems';
+import { useSectionsQuery } from '@services/sections';
+import { getAuthCredentials } from '@utils/auth';
 import { unitOptions } from '@utils/constants';
 import { Button, Form, Input, message, Select } from 'antd';
 import { useEffect } from 'react';
@@ -12,10 +14,19 @@ const CreateEditSectionItemForm = ({
   sectionId
 }) => {
   const [form] = Form.useForm();
+  const { user } = getAuthCredentials();
   const [createSectionItem, { isLoading: loading }] =
     useCreateSectionItemMutation();
   const [updateSectionItem, { isLoading: updating }] =
     useUpdateSectionItemMutation();
+
+  const { data, isLoading: sectionsLoading } = useSectionsQuery({
+    companyId: user?.user?.company?.[0]?.id
+  });
+
+  const sectionOptions = data?.data
+    ? data?.data?.map((doc) => ({ label: doc?.name, value: doc?.id }))
+    : [];
 
   useEffect(() => {
     form.setFieldValue('name', initialValues?.name);
@@ -25,7 +36,14 @@ const CreateEditSectionItemForm = ({
     form.setFieldValue('unit', initialValues?.unit);
   }, [initialValues]);
 
-  async function onSubmit({ name, description, price, quantity, unit }) {
+  async function onSubmit({
+    name,
+    description,
+    price,
+    quantity,
+    unit,
+    ...values
+  }) {
     if (initialValues?.id) {
       const { error } = await updateSectionItem({
         id: initialValues?.id,
@@ -43,7 +61,7 @@ const CreateEditSectionItemForm = ({
         price,
         quantity,
         unit,
-        sectionId
+        sectionId: sectionId ?? values?.sectionId
       });
       if (!error) message.success('Section Item Created');
     }
@@ -79,6 +97,20 @@ const CreateEditSectionItemForm = ({
         >
           <Input size='large' type='number' />
         </Form.Item>
+        {!sectionId ? (
+          <Form.Item
+            label='BOQ Section'
+            name='sectionId'
+            rules={[{ required: true }]}
+          >
+            <Select
+              size='large'
+              options={sectionOptions}
+              placeholder='Select BOQ Section'
+              loading={sectionsLoading}
+            />
+          </Form.Item>
+        ) : null}
         <Form.Item label='Unit' name='unit' rules={[{ required: true }]}>
           <Select
             size='large'

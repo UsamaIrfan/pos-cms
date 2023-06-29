@@ -7,6 +7,7 @@ import {
   useRemoveSectionItemMutation,
   useSectionItemsQuery
 } from '@services/sectionItems';
+import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import {
   Button,
@@ -26,7 +27,10 @@ const SectionItems = () => {
   const navigate = useNavigate();
   const [isEditDrawerOpen, setIsEditDrawerOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState();
-  const { data, isLoading: loading } = useSectionItemsQuery();
+  const { user } = getAuthCredentials();
+  const { data, isLoading: loading } = useSectionItemsQuery({
+    companyId: user?.user?.company?.[0]?.id
+  });
   const [removeSectionItem, { isLoading: removing }] =
     useRemoveSectionItemMutation();
   const items = data?.data ?? [];
