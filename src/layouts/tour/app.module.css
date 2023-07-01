@@ -1,0 +1,11 @@
+.site_container {
+  background: #fff;
+  max-height: 90vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.page_container {
+  flex: 0.75;
+}

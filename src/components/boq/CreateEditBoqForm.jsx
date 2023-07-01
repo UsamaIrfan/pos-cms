@@ -4,7 +4,7 @@ import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import { Button, Form, Input, Select } from 'antd';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
 const createBoqFormSchema = yup.object().shape({
@@ -17,6 +17,7 @@ const CreateEditBoqForm = ({ initialValues }) => {
   const [form] = Form.useForm();
   const [createBoq, { isLoading: loading }] = useCreateBoqMutation();
   const { user } = getAuthCredentials();
+  const location = useLocation();
   const { data, isLoading: tendersLoading } = useTendersQuery({
     companyId: user?.user?.company?.[0]?.id
   });
@@ -35,18 +36,26 @@ const CreateEditBoqForm = ({ initialValues }) => {
   useEffect(() => {
     form.setFieldValue('name', initialValues?.name);
     form.setFieldValue('description', initialValues?.description);
-    form.setFieldValue('tenderId', initialValues?.tenderId);
-  }, [initialValues]);
+    form.setFieldValue(
+      'tenderId',
+      initialValues?.tenderId || location.state?.tenderId
+    );
+  }, [initialValues, location.state]);
 
   async function onSubmit({ name, description, tenderId }) {
-    const { error } = await createBoq({
+    const { error, data } = await createBoq({
       name,
       description,
       tenderId,
       companyId: user?.user?.company?.[0]?.id
     });
     if (!error) {
-      navigate(ROUTES.TENDER.MANAGE);
+      navigate(
+        location.pathname?.includes(ROUTES.TOUR.BOQ)
+          ? ROUTES.TOUR.SECTION
+          : ROUTES.BOQ.MANAGE,
+        { state: { boqId: data?.data?.id } }
+      );
     }
   }
   return (

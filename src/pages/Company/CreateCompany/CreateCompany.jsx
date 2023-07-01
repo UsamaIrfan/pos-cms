@@ -1,11 +1,14 @@
 import { getAuthCredentials } from '@utils/auth';
+import { THEME_OPTIONS } from '@utils/enums';
 import Images from '@utils/images';
 import { ROUTES } from '@utils/routes';
 import { Image, Typography } from 'antd';
 import cn from 'classnames';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
+import Colors from 'src/theme/Colors';
 
 import styles from './CreateCompany.module.css';
 
@@ -14,6 +17,7 @@ import CreateCompanyForm from '@components/company/CreateCompanyForm';
 
 export default function CreateCompany() {
   const navigate = useNavigate();
+  const theme = useSelector((state) => state.app.theme);
   const { token, user } = getAuthCredentials();
 
   const hasCompany = user?.user?.company?.length > 0;
@@ -33,6 +37,12 @@ export default function CreateCompany() {
           className={cn(
             'd-none d-md-flex flex-column h-100 align-items-center justify-content-center bg-gray'
           )}
+          style={{
+            background:
+              theme === THEME_OPTIONS.DARK
+                ? Colors.default.black4
+                : Colors.default.white2
+          }}
         >
           <Typography.Title level={3}>ProXcure</Typography.Title>
           <div className='pt-3'>

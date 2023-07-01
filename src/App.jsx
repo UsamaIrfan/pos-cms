@@ -10,7 +10,7 @@ import PrivateRoute from '@components/auth/PrivateRoute';
 
 import { store } from '@store';
 
-import { CompanyLayout, DashboardLayout } from './layouts';
+import { CompanyLayout, DashboardLayout, TourLayout } from './layouts';
 import {
   BOQ,
   Company,
@@ -42,6 +42,15 @@ const App = () => {
         <Route path={ROUTES.VERIFY_EMAIL} element={<VerifyEmailPage />} />
         <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
         <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
+        <Route element={<TourLayout />}>
+          <Route path={ROUTES.TOUR.TENDER} element={<CreateTender />} />
+          <Route path={ROUTES.TOUR.BOQ} element={<CreateBoq />} />
+          <Route path={ROUTES.TOUR.SECTION} element={<CreateBoqSection />} />
+          <Route
+            path={ROUTES.TOUR.SECTION_ITEM}
+            element={<CreateSectionItem />}
+          />
+        </Route>
         <Route
           path={ROUTES.VERIFY_FORGOT_TOKEN}
           element={<VerifyForgotPassword />}

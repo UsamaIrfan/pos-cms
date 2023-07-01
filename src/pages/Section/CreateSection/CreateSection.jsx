@@ -1,7 +1,7 @@
-import { Card, Col, Row, Timeline, Typography } from 'antd';
+import { Card, Col, Row, Typography } from 'antd';
 import React from 'react';
 
-import { CreateEditSectionForm } from '@components/index';
+import { CreateEditSectionForm, TenderTimeline } from '@components/index';
 
 const CreateBoqSection = () => {
   return (
@@ -18,16 +18,7 @@ const CreateBoqSection = () => {
 
         <Col xs={24} lg={6}>
           <Card>
-            <Timeline>
-              <Timeline.Item color='blue'>
-                Enter basic tender information
-              </Timeline.Item>
-              <Timeline.Item color='blue'>
-                Enter tender BOQs (Bill Of Quantity)
-              </Timeline.Item>
-              <Timeline.Item color='green'>Add Sections to BOQs</Timeline.Item>
-              <Timeline.Item color='gray'>Add Sections items</Timeline.Item>
-            </Timeline>
+            <TenderTimeline selected={3} />
           </Card>
         </Col>
       </Row>

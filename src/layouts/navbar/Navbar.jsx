@@ -12,7 +12,7 @@ import styles from './navbar.module.css';
 
 const { Header: AntHeader } = Layout;
 
-function NavBar() {
+function NavBar({ hideProfileMenu }) {
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useSelector((state) => state.app.theme);
@@ -40,25 +40,27 @@ function NavBar() {
           onClick: () => navigate(route.key)
         }))}
       />
-      <Menu
-        theme='light'
-        selectable={false}
-        mode='horizontal'
-        overflowedIndicator={
-          <Button
-            icon={<UserOutlined />}
-            type='primary'
-            shape='circle'
-            size='large'
-          ></Button>
-        }
-        getPopupContainer={undefined}
-        style={{ position: 'absolute', top: 0, right: 10, maxWidth: '150px' }}
-        items={dropDownRoutes.map((route) => ({
-          ...route,
-          onClick: () => navigate(route.key)
-        }))}
-      />
+      {!hideProfileMenu ? (
+        <Menu
+          theme='light'
+          selectable={false}
+          mode='horizontal'
+          overflowedIndicator={
+            <Button
+              icon={<UserOutlined />}
+              type='primary'
+              shape='circle'
+              size='large'
+            ></Button>
+          }
+          getPopupContainer={undefined}
+          style={{ position: 'absolute', top: 0, right: 10, maxWidth: '150px' }}
+          items={dropDownRoutes.map((route) => ({
+            ...route,
+            onClick: () => navigate(route.key)
+          }))}
+        />
+      ) : null}
     </AntHeader>
   );
 }

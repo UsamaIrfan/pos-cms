@@ -5,8 +5,10 @@ import {
 import { useSectionsQuery } from '@services/sections';
 import { getAuthCredentials } from '@utils/auth';
 import { unitOptions } from '@utils/constants';
+import { ROUTES } from '@utils/routes';
 import { Button, Form, Input, message, Select } from 'antd';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CreateEditSectionItemForm = ({
   initialValues,
@@ -15,6 +17,8 @@ const CreateEditSectionItemForm = ({
 }) => {
   const [form] = Form.useForm();
   const { user } = getAuthCredentials();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [createSectionItem, { isLoading: loading }] =
     useCreateSectionItemMutation();
   const [updateSectionItem, { isLoading: updating }] =
@@ -28,13 +32,15 @@ const CreateEditSectionItemForm = ({
     ? data?.data?.map((doc) => ({ label: doc?.name, value: doc?.id }))
     : [];
 
+  console.log(location.state);
   useEffect(() => {
     form.setFieldValue('name', initialValues?.name);
     form.setFieldValue('description', initialValues?.description);
     form.setFieldValue('price', initialValues?.price);
     form.setFieldValue('quantity', initialValues?.quantity);
     form.setFieldValue('unit', initialValues?.unit);
-  }, [initialValues]);
+    form.setFieldValue('sectionId', location.state?.sectionId);
+  }, [initialValues, location.state]);
 
   async function onSubmit({
     name,
@@ -65,7 +71,17 @@ const CreateEditSectionItemForm = ({
       });
       if (!error) message.success('Section Item Created');
     }
-    onComplete && onComplete();
+    if (onComplete) {
+      onComplete();
+    } else {
+      navigate(
+        location.pathname?.includes(
+          ROUTES.TOUR.SECTION_ITEM
+            ? ROUTES.DASHBOARD
+            : ROUTES.SECTION_ITEMS.MANAGE
+        )
+      );
+    }
   }
 
   return (

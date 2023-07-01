@@ -2,7 +2,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { useCreateCompanyMutation } from '@services/company';
 import { getAuthCredentials, setAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
-import { Button, Col, Form, Input, Row } from 'antd';
+import { Button, Col, Form, Input, message, Row } from 'antd';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -43,7 +43,8 @@ const CreateCompanyForm = ({ initialValues }) => {
         user: data?.data,
         roles: permissions
       });
-      navigate(ROUTES.TENDER.MANAGE);
+      message.success('Company registered. Please create your first tender.');
+      navigate(ROUTES.TOUR.TENDER);
     }
   }
   return (

@@ -25,9 +25,22 @@ const tenderApi = createApi({
       }),
       providesTags: [SERVICE_TAGS.TENDER],
       invalidatesTags: [SERVICE_TAGS.TENDER]
+    }),
+    updateTender: builder.mutation({
+      query: (body) => ({
+        url: `${API_TENDER}/${body?.id}`,
+        method: 'PUT',
+        body
+      }),
+      providesTags: [SERVICE_TAGS.TENDER],
+      invalidatesTags: [SERVICE_TAGS.TENDER]
     })
   })
 });
 
 export default tenderApi;
-export const { useTendersQuery, useCreateTenderMutation } = tenderApi;
+export const {
+  useTendersQuery,
+  useCreateTenderMutation,
+  useUpdateTenderMutation
+} = tenderApi;

@@ -7,7 +7,7 @@ import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import { Button, Form, Input, Select } from 'antd';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
 const createBoqFormSchema = yup.object().shape({
@@ -19,6 +19,7 @@ const createBoqFormSchema = yup.object().shape({
 const CreateEditSectionForm = ({ initialValues, onComplete }) => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const location = useLocation();
   const [createSection, { isLoading: loading }] = useCreateSectionMutation();
   const [updateSection, { isLoading: updating }] = useUpdateSectionMutation();
   const { user } = getAuthCredentials();
@@ -38,7 +39,7 @@ const CreateEditSectionForm = ({ initialValues, onComplete }) => {
   useEffect(() => {
     form.setFieldValue('name', initialValues?.name);
     form.setFieldValue('description', initialValues?.description);
-    form.setFieldValue('boqId', initialValues?.boqId);
+    form.setFieldValue('boqId', initialValues?.boqId || location.state?.boqId);
   }, [initialValues]);
 
   async function onSubmit({ name, description, boqId }) {
@@ -52,13 +53,18 @@ const CreateEditSectionForm = ({ initialValues, onComplete }) => {
         navigate(ROUTES.SECTION.MANAGE);
       }
     } else {
-      const { error } = await createSection({
+      const { error, data } = await createSection({
         name,
         description,
         boqId
       });
       if (!error) {
-        navigate(ROUTES.SECTION.MANAGE);
+        navigate(
+          location.pathname?.includes(ROUTES.TOUR.SECTION)
+            ? ROUTES.TOUR.SECTION_ITEM
+            : ROUTES.SECTION.MANAGE,
+          { state: { sectionId: data?.data?.id } }
+        );
       }
     }
     onComplete && onComplete();

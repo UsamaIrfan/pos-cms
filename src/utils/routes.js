@@ -6,6 +6,12 @@ export const ROUTES = {
   VERIFY_EMAIL: '/verify-email',
   VERIFY_FORGOT_TOKEN: '/verify-forgot',
   RESET_PASSWORD: '/reset-password',
+  TOUR: {
+    TENDER: '/tour/tender',
+    BOQ: '/tour/boq',
+    SECTION: '/tour/section',
+    SECTION_ITEM: '/tour/section-item'
+  },
   TENDER: {
     MANAGE: '/tenders',
     CREATE: '/tenders/create'

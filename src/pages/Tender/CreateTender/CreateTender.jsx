@@ -1,7 +1,7 @@
-import { Card, Col, Row, Timeline, Typography } from 'antd';
+import { Card, Col, Row, Typography } from 'antd';
 import React from 'react';
 
-import { CreateTenderForm } from '@components/index';
+import { CreateEditTenderForm, TenderTimeline } from '@components/index';
 
 const CreateTender = () => {
   return (
@@ -13,20 +13,11 @@ const CreateTender = () => {
       </Row>
       <Row gutter={16}>
         <Col xs={24} lg={12}>
-          <CreateTenderForm />
+          <CreateEditTenderForm />
         </Col>
         <Col xs={24} lg={6}>
           <Card>
-            <Timeline>
-              <Timeline.Item color='green'>
-                Enter basic tender information
-              </Timeline.Item>
-              <Timeline.Item color='gray'>
-                Enter tender BOQs (Bill Of Quantity)
-              </Timeline.Item>
-              <Timeline.Item color='gray'>Add Sections to BOQs</Timeline.Item>
-              <Timeline.Item color='gray'>Add Sections items</Timeline.Item>
-            </Timeline>
+            <TenderTimeline selected={1} />
           </Card>
         </Col>
       </Row>
