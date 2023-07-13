@@ -64,6 +64,12 @@ export default function CreateCompany() {
           sm={12}
           lg={9}
           className='d-flex align-items-md-center justify-content-center flex-column'
+          style={{
+            background:
+              theme === THEME_OPTIONS.DARK
+                ? Colors.default.black1
+                : Colors.default.white1
+          }}
         >
           <Col sm={12} md={6}>
             <Typography.Title level={3} className='d-md-none'>

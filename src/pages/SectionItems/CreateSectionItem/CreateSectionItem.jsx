@@ -12,17 +12,23 @@ const CreateSectionItem = () => {
 
   return (
     <>
-      <Row justify='space-between'>
-        <Typography.Title level={3} type='primary'>
-          Create Section Item
-        </Typography.Title>
-      </Row>
       <Row gutter={16}>
         <Col xs={24} lg={12}>
+          <Typography.Title level={3} type='primary'>
+            Create Section Item
+          </Typography.Title>
           <CreateEditSectionItemForm onComplete={onComplete} />
         </Col>
 
-        <Col xs={24} lg={6}>
+        <Col
+          xs={24}
+          lg={8}
+          style={{
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+        >
           <Card>
             <TenderTimeline selected={4} />
           </Card>

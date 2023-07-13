@@ -26,7 +26,7 @@ export default function VerifyForgotPassword() {
   }, [token, permissions]);
 
   return (
-    <div className='row  m-0 p-0' style={{ height: '100vh' }}>
+    <div className='row  m-0 p-0' style={{ minHeight: '100vh' }}>
       <Row className='m-0 p-0'>
         <Col
           sm={0}

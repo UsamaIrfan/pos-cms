@@ -15,7 +15,7 @@ const CompanyLayout = () => {
   const theme = useSelector((state) => state.app.theme);
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <NavBar />
+      <NavBar hideProfileMenu />
       <Layout>
         <Layout style={{ padding: '0 24px 24px' }}>
           <Content
