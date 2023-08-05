@@ -28,23 +28,23 @@ const CreateCompanyForm = ({ initialValues }) => {
     description,
     address,
     otherDetails,
-    phoneNumber
+    phoneNumber,
   }) {
     const { data, error } = await createCompany({
       name,
       description,
       address,
       otherDetails: JSON.stringify(otherDetails),
-      phoneNumber
+      phoneNumber,
     });
     if (!error) {
       setAuthCredentials(token, permissions, {
         token,
         user: data?.data,
-        roles: permissions
+        roles: permissions,
       });
       message.success('Company registered. Please create your first tender.');
-      navigate(ROUTES.TOUR.TENDER);
+      navigate(ROUTES.TOUR.MASTER_ACCOUNTS);
     }
   }
   return (
@@ -65,8 +65,8 @@ const CreateCompanyForm = ({ initialValues }) => {
           rules={[
             {
               required: true,
-              message: 'Please enter your company name'
-            }
+              message: 'Please enter your company name',
+            },
           ]}
         >
           <Input size='large' type='text' />
@@ -78,8 +78,8 @@ const CreateCompanyForm = ({ initialValues }) => {
           rules={[
             {
               required: true,
-              message: 'Please tell us about your company'
-            }
+              message: 'Please tell us about your company',
+            },
           ]}
         >
           <Input size='large' type='text' />
@@ -91,8 +91,8 @@ const CreateCompanyForm = ({ initialValues }) => {
           rules={[
             {
               required: true,
-              message: 'Please enter your company address'
-            }
+              message: 'Please enter your company address',
+            },
           ]}
         >
           <Input size='large' type='text' />
@@ -104,8 +104,8 @@ const CreateCompanyForm = ({ initialValues }) => {
           rules={[
             {
               required: true,
-              message: 'Please enter your company contact'
-            }
+              message: 'Please enter your company contact',
+            },
           ]}
         >
           <Input size='large' type='text' />
@@ -128,8 +128,8 @@ const CreateCompanyForm = ({ initialValues }) => {
                         rules={[
                           {
                             required: true,
-                            message: 'Detail type is required'
-                          }
+                            message: 'Detail type is required',
+                          },
                         ]}
                         name={[field.name, 'name']}
                       >
@@ -145,8 +145,8 @@ const CreateCompanyForm = ({ initialValues }) => {
                             rules={[
                               {
                                 required: true,
-                                message: 'Detail description is required'
-                              }
+                                message: 'Detail description is required',
+                              },
                             ]}
                             name={[field.name, 'value']}
                           >
@@ -173,7 +173,7 @@ const CreateCompanyForm = ({ initialValues }) => {
                   type='dashed'
                   onClick={() => add({ name: '', value: '' })}
                   style={{
-                    width: '100%'
+                    width: '100%',
                   }}
                   icon={<PlusOutlined />}
                 >

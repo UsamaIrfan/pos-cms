@@ -13,17 +13,17 @@ export const API_FORGOT_PASSWORD_VERIFY = `${API}/auth/verify-forgot`;
 export const API_RESET_PASSWORD = `${API}/auth/reset-password`;
 export const API_CHANGE_PASSWORD = `${API}/auth/change-password`;
 
-// Tenders
-export const API_TENDER = `${API}/tender`;
+// Master Accounts
+export const API_MASTER_ACCOUNT = `${API}/master-account`;
 
 // Company
 export const API_COMPANY = `${API}/company`;
 
-// BOQ
-export const API_BOQ = `${API}/boq`;
+// Accounts (Items)
+export const API_ITEM_ACCOUNT = `${API}/account`;
 
-// SECTION
-export const API_SECTION = `${API}/section`;
+// Orders
+export const API_ORDER = `${API}/order`;
 
-// SECTION-ITEMS
-export const API_SECTION_ITEMS = `${API}/section-item`;
+// Order Items
+export const API_ORDER_ITEMS = `${API}/order-item`;

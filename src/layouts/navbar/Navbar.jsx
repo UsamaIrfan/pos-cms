@@ -24,11 +24,11 @@ function NavBar({ hideProfileMenu }) {
         backgroundColor:
           theme === THEME_OPTIONS.DARK
             ? Colors.default.black1
-            : Colors.default.white1
+            : Colors.default.white1,
       }}
     >
       <div className={cn(styles.logo)}>
-        <Typography.Title level={3}>ProXcure</Typography.Title>
+        <Typography.Title level={3}>Finhance</Typography.Title>
       </div>
 
       <Menu
@@ -37,7 +37,7 @@ function NavBar({ hideProfileMenu }) {
         selectedKeys={[location.pathname]}
         items={routes.map((route) => ({
           ...route,
-          onClick: () => navigate(route.key)
+          onClick: () => navigate(route.key),
         }))}
       />
       {!hideProfileMenu ? (
@@ -57,7 +57,7 @@ function NavBar({ hideProfileMenu }) {
           style={{ position: 'absolute', top: 0, right: 10, maxWidth: '150px' }}
           items={dropDownRoutes.map((route) => ({
             ...route,
-            onClick: () => navigate(route.key)
+            onClick: () => navigate(route.key),
           }))}
         />
       ) : null}
@@ -71,15 +71,11 @@ const routes = [];
 
 const dropDownRoutes = [
   {
-    label: 'Profile',
-    key: ROUTES.PROFILE
-  },
-  {
     label: 'Theme Settings',
-    key: ROUTES.SETTINGS.THEME
+    key: ROUTES.SETTINGS.THEME,
   },
   {
     label: 'Logout',
-    key: ROUTES.LOGOUT
-  }
+    key: ROUTES.LOGOUT,
+  },
 ];

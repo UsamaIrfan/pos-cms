@@ -1,20 +1,20 @@
-import { Card, Col, Row, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import React from 'react';
 
-import { CreateEditSectionForm, TenderTimeline } from '@components/index';
+import { CreateEditOrderForm } from '@components/index';
 
 const CreateBoqSection = () => {
   return (
     <>
       <Row gutter={16}>
-        <Col xs={24} lg={12}>
+        <Col xs={24}>
           <Typography.Title level={3} type='primary'>
-            Create BOQ Section
+            Create Orders
           </Typography.Title>
-          <CreateEditSectionForm />
+          <CreateEditOrderForm />
         </Col>
 
-        <Col
+        {/* <Col
           xs={24}
           lg={8}
           style={{
@@ -26,7 +26,7 @@ const CreateBoqSection = () => {
           <Card>
             <TenderTimeline selected={3} />
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </>
   );

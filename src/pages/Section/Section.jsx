@@ -1,39 +1,44 @@
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { useSectionsQuery } from '@services/sections';
+import { useOrdersQuery } from '@services/order';
 import { getAuthCredentials } from '@utils/auth';
 import { ROUTES } from '@utils/routes';
 import { Button, Drawer, Row, Table, Typography } from 'antd';
+import moment from 'moment-timezone';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { CreateEditSectionForm, SectionItemsTable } from '@components/index';
+import { OrderItemsTable } from '@components/index';
 
 const columns = [
   {
     title: 'ID',
     dataIndex: 'id',
-    key: 'id'
+    key: 'id',
   },
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name'
+    title: 'Total',
+    dataIndex: 'total',
+    key: 'total',
   },
   {
-    title: 'BOQ ID',
-    key: 'boqId',
-    render: (row) => row?.boqId
+    title: 'Subtotal',
+    dataIndex: 'subtotal',
+    key: 'subtotal',
   },
   {
-    title: 'BOQ',
-    key: 'boq',
-    render: (row) => row?.boq?.name
+    title: 'Order Date',
+    key: 'createdAt',
+    render: (row) => moment(row?.createdAt).format('ll'),
   },
   {
-    title: 'No. Of Sections Items',
-    key: 'items',
-    render: (row) => row?.sectionItems?.length
-  }
+    title: 'No. Of Order Items',
+    key: 'orderItems',
+    render: (row) => row?.orderItems?.length,
+  },
+  {
+    title: 'Sales Agent',
+    render: (row) => row?.createdBy?.email,
+  },
 ];
 
 const Section = () => {
@@ -41,12 +46,12 @@ const Section = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState();
   const { user } = getAuthCredentials();
-  const { data, isLoading } = useSectionsQuery({
-    companyId: user?.user?.company?.[0]?.id
+  const { data, isLoading } = useOrdersQuery({
+    companyId: user?.user?.company?.[0]?.id,
   });
-  const sections = data?.data ?? [];
+  const sections = data?.data?.docs ?? [];
 
-  const onCreate = () => navigate(ROUTES.SECTION.CREATE);
+  const onCreate = () => navigate(ROUTES.SALES.CREATE);
 
   const onRowClick = (record) => {
     setIsDrawerOpen(true);
@@ -66,15 +71,11 @@ const Section = () => {
         size='large'
         title={selectedSection?.name}
       >
-        <CreateEditSectionForm
-          onComplete={onDrawerClose}
-          initialValues={selectedSection}
-        />
-        <SectionItemsTable sectionId={selectedSection?.id} />
+        <OrderItemsTable orderId={selectedSection?.id} />
       </Drawer>
       <Row justify='space-between'>
         <Typography.Title level={3} type='primary'>
-          BOQ Sections Management
+          Orders Management
         </Typography.Title>
         <Button type='primary' icon={<PlusCircleOutlined />} onClick={onCreate}>
           Create
@@ -86,7 +87,7 @@ const Section = () => {
         columns={columns}
         onRow={(record) => {
           return {
-            onClick: () => onRowClick(record)
+            onClick: () => onRowClick(record),
           };
         }}
       />

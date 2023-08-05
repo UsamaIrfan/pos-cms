@@ -1,7 +1,13 @@
-import boqApi from './boq';
 import companyApi from './company';
-import sectionApi from './sections';
-import tenderApi from './tender';
+import itemAccountApi from './itemAccount';
+import masterAccountApi from './masterAccount';
+import orderApi from './order';
 import userApi from './user';
 
-export { boqApi, companyApi, sectionApi, tenderApi, userApi };
+export {
+  itemAccountApi as boqApi,
+  companyApi,
+  orderApi as sectionApi,
+  masterAccountApi as tenderApi,
+  userApi,
+};

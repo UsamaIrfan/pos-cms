@@ -1,9 +1,4 @@
-import {
-  AppstoreOutlined,
-  ContainerOutlined,
-  DollarCircleOutlined,
-  FileWordOutlined
-} from '@ant-design/icons';
+import { DollarCircleOutlined, FileWordOutlined } from '@ant-design/icons';
 import NavBar from '@layouts/navbar/Navbar';
 import { THEME_OPTIONS } from '@utils/enums';
 import { ROUTES } from '@utils/routes';
@@ -53,11 +48,11 @@ const DashboardLayout = () => {
                     children: item.children
                       ? item.children?.map((child) => ({
                           ...child,
-                          onClick: () => navigate(child.route)
+                          onClick: () => navigate(child.route),
                         }))
-                      : []
+                      : [],
                   }
-                : {})
+                : {}),
             }))}
           />
         </Sider>
@@ -71,7 +66,7 @@ const DashboardLayout = () => {
               background:
                 theme === THEME_OPTIONS.DARK
                   ? Colors.default.black1
-                  : Colors.default.white1
+                  : Colors.default.white1,
             }}
           >
             <Outlet />
@@ -84,29 +79,23 @@ const DashboardLayout = () => {
 
 const items = [
   {
-    route: ROUTES.TENDER.MANAGE,
-    key: ROUTES.TENDER.MANAGE,
-    label: 'Tender Management',
-    icon: <FileWordOutlined />
+    route: ROUTES.ITEM_ACCOUNTS.MANAGE,
+    key: ROUTES.ITEM_ACCOUNTS.MANAGE,
+    label: 'Item Accounts',
+    icon: <DollarCircleOutlined />,
   },
   {
-    route: ROUTES.BOQ.MANAGE,
-    key: ROUTES.BOQ.MANAGE,
-    label: 'Bill of Quantity Management',
-    icon: <DollarCircleOutlined />
+    route: ROUTES.SALES.MANAGE,
+    key: ROUTES.SALES.MANAGE,
+    label: 'Sales Management',
+    icon: <DollarCircleOutlined />,
   },
   {
-    route: ROUTES.SECTION.MANAGE,
-    key: ROUTES.SECTION.MANAGE,
-    label: 'BOQ Sections',
-    icon: <AppstoreOutlined />
+    route: ROUTES.MASTER_ACCOUNTS.MANAGE,
+    key: ROUTES.MASTER_ACCOUNTS.MANAGE,
+    label: 'Master Accounts',
+    icon: <FileWordOutlined />,
   },
-  {
-    route: ROUTES.SECTION_ITEMS.MANAGE,
-    key: ROUTES.SECTION_ITEMS.MANAGE,
-    label: 'Sections Items',
-    icon: <ContainerOutlined />
-  }
 ];
 
 export default DashboardLayout;

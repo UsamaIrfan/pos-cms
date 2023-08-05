@@ -2,14 +2,14 @@
 import { configureStore as reduxConfigureStore } from '@reduxjs/toolkit';
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query';
-import sectionItemsApi from '@services/sectionItems';
+import orderItemsApi from '@services/orderItems';
 
 import {
   boqApi,
   companyApi,
   sectionApi,
   tenderApi,
-  userApi
+  userApi,
 } from '../services';
 // import auth from '../Slices/authSlice';
 import combineReducer from '../slices';
@@ -32,7 +32,7 @@ export const store = () => {
       [companyApi.reducerPath]: companyApi.reducer,
       [boqApi.reducerPath]: boqApi.reducer,
       [sectionApi.reducerPath]: sectionApi.reducer,
-      [sectionItemsApi.reducerPath]: sectionItemsApi.reducer
+      [orderItemsApi.reducerPath]: orderItemsApi.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
@@ -43,9 +43,9 @@ export const store = () => {
         companyApi.middleware,
         boqApi.middleware,
         sectionApi.middleware,
-        sectionItemsApi.middleware
+        orderItemsApi.middleware
       ),
-    devTools: process.env.NODE_ENV === 'development'
+    devTools: process.env.NODE_ENV === 'development',
   });
 
   return cs;

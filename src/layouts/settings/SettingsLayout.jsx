@@ -30,7 +30,7 @@ const SettingsLayout = () => {
               backgroundColor:
                 theme === THEME_OPTIONS.DARK
                   ? Colors.default.black1
-                  : Colors.default.white1
+                  : Colors.default.white1,
             }}
           >
             <Sider className='site-layout-background' width={200}>
@@ -50,7 +50,7 @@ const SettingsLayout = () => {
                 backgroundColor:
                   theme === THEME_OPTIONS.DARK
                     ? Colors.default.black1
-                    : Colors.default.white1
+                    : Colors.default.white1,
               }}
             >
               <Outlet />
@@ -69,13 +69,9 @@ const settingRoutes = [
     type: 'group',
     children: [
       {
-        label: 'Personal Profile',
-        key: ROUTES.SETTINGS.PROFILE
-      },
-      {
         label: 'Theme Settings',
-        key: ROUTES.SETTINGS.THEME
-      }
-    ]
-  }
+        key: ROUTES.SETTINGS.THEME,
+      },
+    ],
+  },
 ];

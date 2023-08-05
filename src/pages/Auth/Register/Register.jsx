@@ -41,13 +41,13 @@ export default function RegisterPage() {
             background:
               theme === THEME_OPTIONS.DARK
                 ? Colors.default.black4
-                : Colors.default.white2
+                : Colors.default.white2,
           }}
         >
-          <Typography.Title level={3}>ProXcure</Typography.Title>
+          <Typography.Title level={3}>Finhance</Typography.Title>
           <div className='pt-3'>
             <Typography.Text className='f-primary-medium'>
-              Think less, Procure more
+              Think less, Automate more
             </Typography.Text>
           </div>
           <div className={styles.imageContainer}>
@@ -68,12 +68,12 @@ export default function RegisterPage() {
             background:
               theme === THEME_OPTIONS.DARK
                 ? Colors.default.black1
-                : Colors.default.white1
+                : Colors.default.white1,
           }}
         >
           <Col sm={12} md={6}>
             <Typography.Title level={3} className='d-md-none'>
-              ProXcure
+              Finhance
             </Typography.Title>
             <div className='text-left w-100'>
               <Typography.Title level={2}>Create an account</Typography.Title>

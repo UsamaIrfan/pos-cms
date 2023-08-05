@@ -1,19 +1,19 @@
-import { Card, Col, Row, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import React from 'react';
 
-import { CreateEditBoqForm, TenderTimeline } from '@components/index';
+import { CreateEditItemAccountForm } from '@components/index';
 
-const CreateBoq = () => {
+const CreateItemAccount = () => {
   return (
     <>
       <Row gutter={16}>
         <Col xs={24} lg={12}>
           <Typography.Title level={3} type='primary'>
-            Create BOQ
+            Create Item Account
           </Typography.Title>
-          <CreateEditBoqForm />
+          <CreateEditItemAccountForm />
         </Col>
-        <Col
+        {/* <Col
           xs={24}
           lg={8}
           style={{
@@ -25,10 +25,10 @@ const CreateBoq = () => {
           <Card>
             <TenderTimeline selected={2} />
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </>
   );
 };
 
-export default CreateBoq;
+export default CreateItemAccount;

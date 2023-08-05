@@ -12,15 +12,13 @@ import { store } from '@store';
 
 import { CompanyLayout, DashboardLayout, TourLayout } from './layouts';
 import {
-  BOQ,
   Company,
   CreateBoqSection,
   CreateCompany,
-  CreateSectionItem,
-  CreateTender,
+  CreateMasterAccount,
+  ItemAccounts,
+  MasterAccounts,
   Section,
-  SectionItems,
-  Tender
 } from './pages';
 import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
 import LoginPage from './pages/Auth/Login/Login';
@@ -29,7 +27,7 @@ import RegisterPage from './pages/Auth/Register/Register';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
 import VerifyEmailPage from './pages/Auth/VerifyEmail/VerifyEmail';
 import VerifyForgotPassword from './pages/Auth/VerifyForgotPassword/VerifyForgotPassword';
-import CreateBoq from './pages/BOQ/CreateBoq/CreateBoq';
+import CreateItemAccount from './pages/ItemAccount/CreateItemAccount/CreateItemAccount';
 import AppSettings from './pages/Settings/AppSettings';
 import ThemeProvider from './theme/ThemeProvider';
 
@@ -43,12 +41,13 @@ const App = () => {
         <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
         <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route element={<TourLayout />}>
-          <Route path={ROUTES.TOUR.TENDER} element={<CreateTender />} />
-          <Route path={ROUTES.TOUR.BOQ} element={<CreateBoq />} />
-          <Route path={ROUTES.TOUR.SECTION} element={<CreateBoqSection />} />
           <Route
-            path={ROUTES.TOUR.SECTION_ITEM}
-            element={<CreateSectionItem />}
+            path={ROUTES.TOUR.MASTER_ACCOUNTS}
+            element={<CreateMasterAccount />}
+          />{' '}
+          <Route
+            path={ROUTES.TOUR.ITEM_ACCOUNTS}
+            element={<CreateItemAccount />}
           />
         </Route>
         <Route
@@ -77,39 +76,39 @@ const App = () => {
             }
           />
           <Route
-            path={ROUTES.TENDER.MANAGE}
+            path={ROUTES.MASTER_ACCOUNTS.MANAGE}
             element={
               <PrivateRoute>
-                <Tender />
+                <MasterAccounts />
               </PrivateRoute>
             }
           />
           <Route
-            path={ROUTES.TENDER.CREATE}
+            path={ROUTES.MASTER_ACCOUNTS.CREATE}
             element={
               <PrivateRoute>
-                <CreateTender />
+                <CreateMasterAccount />
               </PrivateRoute>
             }
           />
           <Route
-            path={ROUTES.BOQ.MANAGE}
+            path={ROUTES.ITEM_ACCOUNTS.MANAGE}
             element={
               <PrivateRoute>
-                <BOQ />
+                <ItemAccounts />
               </PrivateRoute>
             }
           />
           <Route
-            path={ROUTES.BOQ.CREATE}
+            path={ROUTES.ITEM_ACCOUNTS.CREATE}
             element={
               <PrivateRoute>
-                <CreateBoq />
+                <CreateItemAccount />
               </PrivateRoute>
             }
           />
           <Route
-            path={ROUTES.SECTION.MANAGE}
+            path={ROUTES.SALES.MANAGE}
             element={
               <PrivateRoute>
                 <Section />
@@ -117,26 +116,10 @@ const App = () => {
             }
           />
           <Route
-            path={ROUTES.SECTION.CREATE}
+            path={ROUTES.SALES.CREATE}
             element={
               <PrivateRoute>
                 <CreateBoqSection />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={ROUTES.SECTION_ITEMS.MANAGE}
-            element={
-              <PrivateRoute>
-                <SectionItems />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={ROUTES.SECTION_ITEMS.CREATE}
-            element={
-              <PrivateRoute>
-                <CreateSectionItem />
               </PrivateRoute>
             }
           />

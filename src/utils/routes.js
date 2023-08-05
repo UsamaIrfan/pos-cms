@@ -7,35 +7,35 @@ export const ROUTES = {
   VERIFY_FORGOT_TOKEN: '/verify-forgot',
   RESET_PASSWORD: '/reset-password',
   TOUR: {
-    TENDER: '/tour/tender',
-    BOQ: '/tour/boq',
+    MASTER_ACCOUNTS: '/tour/master-accounts',
+    ITEM_ACCOUNTS: '/tour/item-accounts',
     SECTION: '/tour/section',
-    SECTION_ITEM: '/tour/section-item'
+    SECTION_ITEM: '/tour/section-item',
   },
-  TENDER: {
-    MANAGE: '/tenders',
-    CREATE: '/tenders/create'
+  MASTER_ACCOUNTS: {
+    MANAGE: '/master-accounts',
+    CREATE: '/master-accounts/create',
   },
-  SECTION: {
-    MANAGE: '/section',
-    CREATE: '/section/create'
+  ITEM_ACCOUNTS: {
+    MANAGE: '/item-accounts',
+    CREATE: '/item-accounts/create',
+  },
+  SALES: {
+    MANAGE: '/sales',
+    CREATE: '/sales/create',
   },
   SECTION_ITEMS: {
     MANAGE: '/section-items',
-    CREATE: '/section-items/create'
-  },
-  BOQ: {
-    MANAGE: '/boq',
-    CREATE: '/boq/create'
+    CREATE: '/section-items/create',
   },
   SETTINGS: {
     PROFILE: '/profile',
-    THEME: '/theme'
+    THEME: '/theme',
   },
   COMPANY: {
     MANAGE: '/company',
-    CREATE: '/company/create'
+    CREATE: '/company/create',
   },
   PROFILE: '/profile',
-  LOGOUT: '/logout'
+  LOGOUT: '/logout',
 };

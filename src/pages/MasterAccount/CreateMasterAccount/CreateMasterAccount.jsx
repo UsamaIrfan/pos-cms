@@ -1,20 +1,20 @@
-import { Card, Col, Row, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import React from 'react';
 
-import { CreateEditTenderForm, TenderTimeline } from '@components/index';
+import { CreateEditMasterAccountForm } from '@components/index';
 
-const CreateTender = () => {
+const CreateMasterAccount = () => {
   return (
     <>
       <Row gutter={16}>
         <Col xs={24} lg={12}>
           <Typography.Title level={3} type='primary'>
-            Create Tender
+            Create Master Account
           </Typography.Title>
-          <CreateEditTenderForm />
+          <CreateEditMasterAccountForm />
         </Col>
 
-        <Col
+        {/* <Col
           xs={24}
           lg={8}
           style={{
@@ -26,10 +26,10 @@ const CreateTender = () => {
           <Card>
             <TenderTimeline selected={1} />
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </>
   );
 };
 
-export default CreateTender;
+export default CreateMasterAccount;

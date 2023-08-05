@@ -1,9 +1,3 @@
-import {
-  AppstoreOutlined,
-  ContainerOutlined,
-  DollarCircleOutlined,
-  FileWordOutlined
-} from '@ant-design/icons';
 import NavBar from '@layouts/navbar/Navbar';
 import { THEME_OPTIONS } from '@utils/enums';
 import { ROUTES } from '@utils/routes';
@@ -39,14 +33,14 @@ const TourLayout = () => {
               background:
                 theme === THEME_OPTIONS.DARK
                   ? Colors.default.black1
-                  : Colors.default.white1
+                  : Colors.default.white1,
             }}
           >
             <Button
               onClick={onSkip}
               style={{ position: 'absolute', top: 10, right: 10 }}
             >
-              Skip Tender Creation
+              Skip Accounts Creation
             </Button>
             <div className={cn(styles.page_container)}>
               <Outlet />
@@ -57,32 +51,4 @@ const TourLayout = () => {
     </Layout>
   );
 };
-
-const items = [
-  {
-    route: ROUTES.TENDER.MANAGE,
-    key: ROUTES.TENDER.MANAGE,
-    label: 'Tender Management',
-    icon: <FileWordOutlined />
-  },
-  {
-    route: ROUTES.BOQ.MANAGE,
-    key: ROUTES.BOQ.MANAGE,
-    label: 'Bill of Quantity Management',
-    icon: <DollarCircleOutlined />
-  },
-  {
-    route: ROUTES.SECTION.MANAGE,
-    key: ROUTES.SECTION.MANAGE,
-    label: 'BOQ Sections',
-    icon: <AppstoreOutlined />
-  },
-  {
-    route: ROUTES.SECTION_ITEMS.MANAGE,
-    key: ROUTES.SECTION_ITEMS.MANAGE,
-    label: 'Sections Items',
-    icon: <ContainerOutlined />
-  }
-];
-
 export default TourLayout;
