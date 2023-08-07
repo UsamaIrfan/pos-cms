@@ -17,6 +17,13 @@ const itemAccountApi = createApi({
       }),
       providesTags: [SERVICE_TAGS.ITEM_ACCOUNT],
     }),
+    itemAccount: builder.query({
+      query: (params) => ({
+        url: `${API_ITEM_ACCOUNT}/${params.id}`,
+        method: 'GET',
+      }),
+      providesTags: [SERVICE_TAGS.ITEM_ACCOUNT],
+    }),
     allItemAccounts: builder.query({
       query: (params) => ({
         url: `${API_ITEM_ACCOUNT}/all`,
@@ -43,15 +50,26 @@ const itemAccountApi = createApi({
       providesTags: [SERVICE_TAGS.ITEM_ACCOUNT],
       invalidatesTags: [SERVICE_TAGS.ITEM_ACCOUNT],
     }),
+    removeItemAccount: builder.mutation({
+      query: (body) => ({
+        url: `${API_ITEM_ACCOUNT}/${body?.id}`,
+        method: 'DELETE',
+        body,
+      }),
+      providesTags: [SERVICE_TAGS.ITEM_ACCOUNT],
+      invalidatesTags: [SERVICE_TAGS.ITEM_ACCOUNT],
+    }),
   }),
 });
 
 export default itemAccountApi;
 export const {
   useItemAccountsQuery,
+  useItemAccountQuery,
   useAllItemAccountsQuery,
   useLazyItemAccountsQuery,
   useLazyAllItemAccountsQuery,
   useCreateItemAccountMutation,
   useUpdateItemAccountMutation,
+  useRemoveItemAccountMutation,
 } = itemAccountApi;

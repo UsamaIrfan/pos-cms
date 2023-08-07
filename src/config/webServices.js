@@ -22,6 +22,10 @@ export const API_COMPANY = `${API}/company`;
 // Accounts (Items)
 export const API_ITEM_ACCOUNT = `${API}/account`;
 
+// Transactions
+export const API_TRANSACTION = `${API}/transaction`;
+export const API_TRANSACTION_INVEST = `${API}/transaction/invest`;
+
 // Orders
 export const API_ORDER = `${API}/order`;
 

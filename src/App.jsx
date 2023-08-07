@@ -12,12 +12,15 @@ import { store } from '@store';
 
 import { CompanyLayout, DashboardLayout, TourLayout } from './layouts';
 import {
+  BalanceSheets,
   Company,
   CreateBoqSection,
   CreateCompany,
+  CreateInventoryPurchase,
   CreateMasterAccount,
   ItemAccounts,
   MasterAccounts,
+  PurchaseInventory,
   Section,
 } from './pages';
 import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
@@ -27,6 +30,7 @@ import RegisterPage from './pages/Auth/Register/Register';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
 import VerifyEmailPage from './pages/Auth/VerifyEmail/VerifyEmail';
 import VerifyForgotPassword from './pages/Auth/VerifyForgotPassword/VerifyForgotPassword';
+import CreateInvestment from './pages/Investment/Investment';
 import CreateItemAccount from './pages/ItemAccount/CreateItemAccount/CreateItemAccount';
 import AppSettings from './pages/Settings/AppSettings';
 import ThemeProvider from './theme/ThemeProvider';
@@ -96,6 +100,38 @@ const App = () => {
             element={
               <PrivateRoute>
                 <ItemAccounts />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ROUTES.INVESTMENT}
+            element={
+              <PrivateRoute>
+                <CreateInvestment />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ROUTES.REPORTS.BALANCE_SHEETS}
+            element={
+              <PrivateRoute>
+                <BalanceSheets />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ROUTES.PURCHASE.MANAGE}
+            element={
+              <PrivateRoute>
+                <PurchaseInventory />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ROUTES.PURCHASE.CREATE}
+            element={
+              <PrivateRoute>
+                <CreateInventoryPurchase />
               </PrivateRoute>
             }
           />

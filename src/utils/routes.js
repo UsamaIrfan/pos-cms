@@ -16,6 +16,14 @@ export const ROUTES = {
     MANAGE: '/master-accounts',
     CREATE: '/master-accounts/create',
   },
+  REPORTS: {
+    BALANCE_SHEETS: '/reports/balance',
+  },
+  PURCHASE: {
+    MANAGE: '/purchase',
+    CREATE: '/purchase/create',
+  },
+  INVESTMENT: '/investments',
   ITEM_ACCOUNTS: {
     MANAGE: '/item-accounts',
     CREATE: '/item-accounts/create',

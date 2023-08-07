@@ -1,4 +1,4 @@
-import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import {
   useOrderItemsQuery,
   useRemoveOrderItemMutation,
@@ -20,8 +20,6 @@ const OrderItemsTable = ({ orderId }) => {
     removeSectionItem({ id: item?.id });
   };
 
-  const onAdd = () => setIsEditDrawerOpen(true);
-
   const onEditClose = () => {
     setSelectedItem(null);
     setIsEditDrawerOpen(false);
@@ -36,12 +34,12 @@ const OrderItemsTable = ({ orderId }) => {
       },
       {
         title: 'Name',
-        dataIndex: 'title',
+        render: (row) => row?.title ?? row?.item?.title,
         key: 'title',
       },
       {
         title: 'Description',
-        dataIndex: 'description',
+        render: (row) => row?.description ?? row?.item?.description,
         key: 'description',
       },
       {
@@ -85,15 +83,12 @@ const OrderItemsTable = ({ orderId }) => {
       <>
         <Row justify='space-between'>
           <Typography.Title level={5}>Order Items</Typography.Title>
-          <Button icon={<PlusOutlined />} onClick={onAdd}>
-            Add Item
-          </Button>
         </Row>
         <Table
           loading={loading}
           dataSource={items}
           columns={columns}
-          caption='Products listed in this BOQ'
+          caption='Products listed in this Sale'
         />
       </>
     </>

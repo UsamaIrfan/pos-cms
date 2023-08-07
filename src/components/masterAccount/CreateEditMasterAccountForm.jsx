@@ -1,12 +1,13 @@
 import {
   useCreateMasterAccountMutation,
+  useMasterAccountsQuery,
   useUpdateMasterAccountMutation,
 } from '@services/masterAccount';
 import { getAuthCredentials } from '@utils/auth';
 import { accountTypeOptions } from '@utils/constants';
 import { ROUTES } from '@utils/routes';
 import { Button, Form, Input, Select } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
@@ -23,6 +24,8 @@ const CreateEditMasterAccountForm = ({ initialValues, onComplete }) => {
     useUpdateMasterAccountMutation();
   const { user } = getAuthCredentials();
   const location = useLocation();
+
+  const { data } = useMasterAccountsQuery();
 
   const yupSync = {
     async validator({ field }, value) {
@@ -72,6 +75,12 @@ const CreateEditMasterAccountForm = ({ initialValues, onComplete }) => {
     if (initialValues?.type) form.setFieldValue('type', initialValues?.type);
   }, [initialValues]);
 
+  const filteredAccountTypes = useMemo(() =>
+    accountTypeOptions?.filter((type) =>
+      data?.data?.docs?.every((doc) => doc?.type !== type?.value)
+    )
+  );
+
   return (
     <>
       <Form
@@ -89,7 +98,7 @@ const CreateEditMasterAccountForm = ({ initialValues, onComplete }) => {
         <Form.Item label='Master Account Type' name='type' rules={[yupSync]}>
           <Select
             size='large'
-            options={accountTypeOptions}
+            options={filteredAccountTypes}
             placeholder='Select Account Type'
           />
         </Form.Item>

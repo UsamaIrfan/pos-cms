@@ -78,6 +78,10 @@ export const accountTypeOptions = [
     label: 'Revenue Account',
     value: ACCOUNT_TYPES.REVENUE,
   },
+  {
+    label: 'Expense Account',
+    value: ACCOUNT_TYPES.EXPENSE,
+  },
 ];
 
 export const itemTypeOptions = [

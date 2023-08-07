@@ -7,7 +7,7 @@ import { API_ORDER } from '../config/webServices';
 const orderApi = createApi({
   reducerPath: REDUCER_PATHS.order,
   baseQuery: customizeBaseQuery(),
-  tagTypes: [SERVICE_TAGS.ORDER],
+  tagTypes: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
   endpoints: (builder) => ({
     orders: builder.query({
       query: (params) => ({
@@ -23,8 +23,8 @@ const orderApi = createApi({
         method: 'POST',
         body,
       }),
-      providesTags: [SERVICE_TAGS.ORDER],
-      invalidatesTags: [SERVICE_TAGS.ORDER],
+      providesTags: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
+      invalidatesTags: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
     }),
     updateOrder: builder.mutation({
       query: (body) => ({
@@ -32,8 +32,8 @@ const orderApi = createApi({
         method: 'PUT',
         body,
       }),
-      providesTags: [SERVICE_TAGS.ORDER],
-      invalidatesTags: [SERVICE_TAGS.ORDER],
+      providesTags: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
+      invalidatesTags: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
     }),
     removeOrder: builder.mutation({
       query: (body) => ({
@@ -41,8 +41,8 @@ const orderApi = createApi({
         method: 'DELETE',
         body,
       }),
-      providesTags: [SERVICE_TAGS.ORDER],
-      invalidatesTags: [SERVICE_TAGS.ORDER],
+      providesTags: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
+      invalidatesTags: [SERVICE_TAGS.ORDER, SERVICE_TAGS.ITEM_ACCOUNT],
     }),
     order: builder.query({
       query: (body) => ({

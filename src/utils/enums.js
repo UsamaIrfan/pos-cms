@@ -2,6 +2,7 @@ export const REDUCER_PATHS = {
   user: 'user',
   masterAccount: 'masterAccount',
   itemAccount: 'itemAccount',
+  transaction: 'transaction',
   order: 'order',
   sectionItems: 'sectionItems',
   company: 'company',
@@ -11,6 +12,7 @@ export const SERVICE_TAGS = Object.freeze({
   USER: 'USER',
   MASTER_ACCOUNT: 'MASTER_ACCOUNT',
   ITEM_ACCOUNT: 'ITEM_ACCOUNT',
+  TRANSACTION: 'TRANSACTION',
   ORDER: 'ORDER',
   SECTION_ITEMS: 'SECTION_ITEMS',
   COMPANY: 'COMPANY',
@@ -24,6 +26,7 @@ export const ACCOUNT_TYPES = Object.freeze({
   CAPITAL: 'CAPITAL',
   DEPRECIATION: 'DEPRECIATION',
   INVENTORY: 'INVENTORY',
+  EXPENSE: 'EXPENSE',
 });
 
 export const ITEM_TYPES = Object.freeze({

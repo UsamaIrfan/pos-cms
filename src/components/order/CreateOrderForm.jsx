@@ -77,7 +77,11 @@ const CreateEditOrderForm = ({ initialValues }) => {
   }
 
   const onSearch = (val) => {
-    searchAccounts({ title: val, accountTypeId: inventoryAccount?.id });
+    searchAccounts({
+      title: val,
+      accountTypeId: inventoryAccount?.id,
+      companyId: user?.user?.company?.[0]?.id,
+    });
   };
 
   const onChange = (val) => {
@@ -89,7 +93,10 @@ const CreateEditOrderForm = ({ initialValues }) => {
   useEffect(() => {
     if (currentItem) {
       form.setFieldValue('saleQuantity', 1);
-      form.setFieldValue('salePrice', currentItem?.price);
+      form.setFieldValue(
+        'salePrice',
+        currentItem?.salePrice ?? currentItem?.price
+      );
     }
   }, [currentItem]);
 
@@ -147,6 +154,7 @@ const CreateEditOrderForm = ({ initialValues }) => {
       orderItems: selectedItems?.map((item) => ({
         salePrice: item?.salePrice,
         saleQuantity: item?.saleQuantity,
+        price: item?.price,
         itemId: item?.id,
       })),
       companyId: user?.user?.company?.[0]?.id,
@@ -222,7 +230,7 @@ const CreateEditOrderForm = ({ initialValues }) => {
           <Statistic
             title='Total'
             value={selectedItems?.reduce(
-              (acc, curr) => acc + curr?.salePrice,
+              (acc, curr) => acc + curr?.salePrice * curr?.saleQuantity,
               0
             )}
             prefix={<DollarCircleOutlined />}

@@ -5,10 +5,11 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import orderItemsApi from '@services/orderItems';
 
 import {
-  boqApi,
   companyApi,
-  sectionApi,
-  tenderApi,
+  itemAccountApi,
+  itemTransactionApi,
+  masterAccountApi,
+  orderApi,
   userApi,
 } from '../services';
 // import auth from '../Slices/authSlice';
@@ -28,22 +29,24 @@ export const store = () => {
     reducer: {
       ...combineReducer,
       [userApi.reducerPath]: userApi.reducer,
-      [tenderApi.reducerPath]: tenderApi.reducer,
+      [masterAccountApi.reducerPath]: masterAccountApi.reducer,
       [companyApi.reducerPath]: companyApi.reducer,
-      [boqApi.reducerPath]: boqApi.reducer,
-      [sectionApi.reducerPath]: sectionApi.reducer,
+      [itemAccountApi.reducerPath]: itemAccountApi.reducer,
+      [orderApi.reducerPath]: orderApi.reducer,
       [orderItemsApi.reducerPath]: orderItemsApi.reducer,
+      [itemTransactionApi.reducerPath]: itemTransactionApi.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(
         userApi.middleware,
-        tenderApi.middleware,
+        masterAccountApi.middleware,
         companyApi.middleware,
-        boqApi.middleware,
-        sectionApi.middleware,
-        orderItemsApi.middleware
+        itemAccountApi.middleware,
+        orderApi.middleware,
+        orderItemsApi.middleware,
+        itemTransactionApi.middleware
       ),
     devTools: process.env.NODE_ENV === 'development',
   });

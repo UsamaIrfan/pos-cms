@@ -43,7 +43,9 @@ const CreateCompanyForm = ({ initialValues }) => {
         user: data?.data,
         roles: permissions,
       });
-      message.success('Company registered. Please create your first tender.');
+      message.success(
+        'Company registered. Please create your first master account.'
+      );
       navigate(ROUTES.TOUR.MASTER_ACCOUNTS);
     }
   }

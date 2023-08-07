@@ -1,4 +1,10 @@
-import { DollarCircleOutlined, FileWordOutlined } from '@ant-design/icons';
+import {
+  AppstoreAddOutlined,
+  BarChartOutlined,
+  DollarCircleOutlined,
+  FileWordOutlined,
+  SortAscendingOutlined,
+} from '@ant-design/icons';
 import NavBar from '@layouts/navbar/Navbar';
 import { THEME_OPTIONS } from '@utils/enums';
 import { ROUTES } from '@utils/routes';
@@ -22,7 +28,7 @@ const DashboardLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Layout style={{ height: '100vh' }}>
+    <Layout style={{ minHeight: '100vh' }}>
       <NavBar />
       <Layout>
         <Sider
@@ -95,6 +101,24 @@ const items = [
     key: ROUTES.MASTER_ACCOUNTS.MANAGE,
     label: 'Master Accounts',
     icon: <FileWordOutlined />,
+  },
+  {
+    route: ROUTES.REPORTS.BALANCE_SHEETS,
+    key: ROUTES.REPORTS.BALANCE_SHEETS,
+    label: 'Balance Sheets',
+    icon: <SortAscendingOutlined />,
+  },
+  {
+    route: ROUTES.INVESTMENT,
+    key: ROUTES.INVESTMENT,
+    label: 'Invest',
+    icon: <BarChartOutlined />,
+  },
+  {
+    route: ROUTES.PURCHASE.MANAGE,
+    key: ROUTES.PURCHASE.MANAGE,
+    label: 'Inventory Purchases',
+    icon: <AppstoreAddOutlined />,
   },
 ];
 

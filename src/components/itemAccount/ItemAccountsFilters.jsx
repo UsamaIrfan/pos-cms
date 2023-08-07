@@ -25,6 +25,7 @@ const ItemAccountsFilters = ({ form }) => {
               placeholder='Account type'
               loading={loading}
               options={masterAccountOptions ?? []}
+              allowClear
             />
           </Form.Item>
 

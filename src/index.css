@@ -52,3 +52,19 @@ svg {
 .bg-gray {
   background-color: #fafaf9;
 }
+
+.bg-yellow {
+  background: rgb(250, 255, 116);
+}
+
+.bg-light-green {
+  background: rgb(149, 213, 144);
+}
+
+.bg-light-red {
+  background: rgb(226, 155, 155);
+}
+
+.bg-light-blue {
+  background: rgb(166, 199, 255);
+}
